@@ -107,6 +107,7 @@ ai.predict(X_n1_1)
 
 ![image](https://github.com/Evangelin-Ruth/basic-nn-model/assets/94219798/82eccc49-2d8c-4377-b899-91e4d95d073b)
 
+
 ## OUTPUT
 
 ### Training Loss Vs Iteration Plot
