@@ -6,13 +6,15 @@ To develop a neural network regression model for the given dataset.
 
 ## THEORY
 
-Explain the problem statement
+Neural networks consist of simple input/output units called neurons. These units are interconnected and each connection has a weight associated with it. Neural networks are flexible and can be used for both classification and regression. In this article, we will see how neural networks can be applied to regression problems.
+
+Regression helps in establishing a relationship between a dependent variable and one or more independent variables. Regression models work well only when the regression equation is a good fit for the data. Although neural networks are complex and computationally expensive, they are flexible and can dynamically pick the best type of regression, and if that is not enough, hidden layers can be added to improve prediction.
+
+Build your training and test set from the dataset, here we are making the neural network 3 hidden layer with activation layer as relu and with their nodes in them. Now we will fit our dataset and then predict the value.
 
 ## Neural Network Model
 
-Include the neural network model diagram.
-![image](https://github.com/Evangelin-Ruth/basic-nn-model/assets/94219798/1f367f50-68f3-4550-9db4-6edb70cd2061)
-
+![image](https://github.com/Evangelin-Ruth/basic-nn-model/assets/94219798/bb4bca5d-81c8-4a72-87ac-ef0d6c0d78a0)
 
 ## DESIGN STEPS
 
