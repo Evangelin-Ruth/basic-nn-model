@@ -11,6 +11,8 @@ Explain the problem statement
 ## Neural Network Model
 
 Include the neural network model diagram.
+![image](https://github.com/Evangelin-Ruth/basic-nn-model/assets/94219798/1f367f50-68f3-4550-9db4-6edb70cd2061)
+
 
 ## DESIGN STEPS
 
@@ -43,25 +45,81 @@ Plot the performance plot
 Evaluate the model with the testing data.
 
 ## PROGRAM
+```
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
 
-Include your code here
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+from google.colab import auth
+import gspread
+from google.auth import default
+
+auth.authenticate_user()
+creds, _ = default()
+gc = gspread.authorize(creds)
+
+worksheet = gc.open('DLExp1').sheet1
+data = worksheet.get_all_values()
+df = pd.DataFrame(data[1:], columns=data[0])
+df = df.astype({'Input':'float'})
+df = df.astype({'Output':'float'})
+df.head()
+
+X = df[['Input']].values
+y = df[['Output']].values
+X
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.33,random_state = 33)
+Scaler = MinMaxScaler()
+Scaler.fit(X_train)
+X_train1 = Scaler.transform(X_train)
+X_train1
+
+ai=Sequential([
+    Dense(7,activation='relu'),
+    Dense(14,activation='relu'),
+    Dense(1)
+])
+ai.compile(optimizer='rmsprop',loss='mse')
+ai.fit(X_train1,y_train,epochs=2000)
+ai.fit(X_train1,y_train,epochs=2000)
+
+## Plot the loss
+loss_df = pd.DataFrame(ai.history.history)
+loss_df.plot()
+
+## Evaluate the model
+X_test1 = Scaler.transform(X_test)
+ai.evaluate(X_test1,y_test)
+
+# Prediction
+X_n1 = [[30]]
+X_n1_1 = Scaler.transform(X_n1)
+ai.predict(X_n1_1)
+```
 
 ## Dataset Information
 
-Include screenshot of the dataset
+![image](https://github.com/Evangelin-Ruth/basic-nn-model/assets/94219798/82eccc49-2d8c-4377-b899-91e4d95d073b)
 
 ## OUTPUT
 
 ### Training Loss Vs Iteration Plot
 
-Include your plot here
+![image](https://github.com/Evangelin-Ruth/basic-nn-model/assets/94219798/30851c52-03be-46f6-84ed-bb6dd10b4a6f)
+
 
 ### Test Data Root Mean Squared Error
 
-Find the test data root mean squared error
+![image](https://github.com/Evangelin-Ruth/basic-nn-model/assets/94219798/bd24ba02-06b8-42ba-b6fb-548ab2163a07)
 
 ### New Sample Data Prediction
 
-Include your sample input and output here
+![image](https://github.com/Evangelin-Ruth/basic-nn-model/assets/94219798/e595b06c-4cad-4f63-a377-c35c0140de3a)
 
 ## RESULT
+Thus a neural network regression model for the given dataset is written and executed successfully.
+
